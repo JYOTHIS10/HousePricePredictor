@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="{{url_for('static',filename='style3.css')}}" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{url_for('static',filename='favicon.png')}}" />
+
+    <title>Kolkata Home Price Prediction</title>
+</head>
+
+<body>
+    <div class=" img"></div>
+     <nav class="navbar navbar-inverse navbar-light navbar-fixed-top">
+      <a href="{{url_for('home')}}" class="navbar-brand"><img src="static/homeIcon.png" height="30" width="30"></a>
+    </nav>
+    <div class="container text-center">
+        <h1><b>Kolkata Property Price Prediction</b></h1>
+        <form class="form" action="{{url_for('Kolkata_prediction')}}" method="POST" autocomplete="off">
+            <h2>Area (Square Feet)</h2>
+            <input required aria-required="true" type="number" class="area" id="uiSqft" class="floatLabel"
+                name="Squareft" placeholder="1000" min="1000" max="50000" />
+
+            <h2>BHK</h2>
+            <div class="switch-field text-center">
+                <div class="allRadio">
+                    <input class="text-center" type="radio" id="radio-bhk-1" name="uiBHK" value="1" />
+                    <label class="text-center" for="radio-bhk-1">1</label>
+                    <input class="text-center" type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked />
+                    <label class="text-center" for="radio-bhk-2">2</label>
+                    <input class="text-center" type="radio" id="radio-bhk-3" name="uiBHK" value="3" />
+                    <label class="text-center" for="radio-bhk-3">3</label>
+                    <input class="text-center" type="radio" id="radio-bhk-4" name="uiBHK" value="4" />
+                    <label class="text-center" for="radio-bhk-4">4</label>
+                    <input class="text-center" type="radio" id="radio-bhk-5" name="uiBHK" value="5" />
+                    <label class="text-center" for="radio-bhk-5">5</label>
+                </div>
+            </div>
+            <h2>Bathrooms</h2>
+            <div class="switch-field text-center">
+                <div class="allRadio">
+                    <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1" />
+                    <label for="radio-bath-1">1</label>
+                    <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked />
+                    <label for="radio-bath-2">2</label>
+                    <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3" />
+                    <label for="radio-bath-3">3</label>
+                    <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4" />
+                    <label for="radio-bath-4">4</label>
+                    <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5" />
+                    <label for="radio-bath-5">5</label>
+                </div>
+            </div>
+
+
+            <h2>Location</h2>
+            <div>
+                <select required aria-required="true" name="sLocation" id="uiLocations" class="location">
+                    <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+                    <option>Barasat</option>
+                <option>Keshtopur</option>
+                <option>Rajarhat</option>
+                <option>Narendrapur</option>
+                <option>New Town</option>
+                <option>Joka</option>
+                <option>Tangra</option>
+                <option>Sonarpur</option>
+                <option>Madhyamgram</option>
+                <option>Dum Dum</option>
+                <option>Chkravarti Para</option>
+                <option>Tollygunge</option>
+                <option>Sarsuna</option>
+                <option>Ultadang</option>
+                <option>Madurdaha Hussainpur</option>
+                <option>New Alipore</option>
+                <option>Mukundapur</option>
+                <option>Kutighat</option>
+                <option>Behala</option>
+                <option>Sodepur</option>
+                <option>Konnagar</option>
+                <option>Uttarpara Kotrung</option>
+                <option>Baguiati</option>
+                <option>Hooghly Chinsurah</option>
+                <option>Hussainpur</option>
+                <option>Dum Dum Park</option>
+                <option>Bhadreswar</option>
+                <option>Garia</option>
+                <option>south dum dum</option>
+                <option>Santoshpur</option>
+                <option>Gariahat</option>
+                <option>Lake Gardens</option>
+                <option>Kalighat</option>
+                <option>Belghoria</option>
+                <option>Tagore Park</option>
+                <option>Kamardanga</option>
+                <option>Ballygunge</option>
+                <option>Purba Putiary</option>
+                <option>Ariadaha</option>
+                <option>Rahara</option>
+                <option>Kasba</option>
+                <option>Paschim Putiary</option>
+                <option>Howrah</option>
+                <option>Barisha Purba Para Road</option>
+                <option>Tiljala</option>
+                <option>Airport</option>
+                <option>East Kolkata Township</option>
+                <option>raghunathpur</option>
+                <option>Barrackpore</option>
+                <option>Lake Town</option>
+                <option>Bhawanipur</option>
+                <option>Aliporev</option>
+                <option>Park Street Area</option>
+                <option>Elgin</option>
+                <option>Thakurpukur</option>
+                <option>Ashok Nagar</option>
+                <option>Haltu</option>
+                <option>Salt Lake City</option>
+                <option>Kaikhali</option>
+                <option>Chinar Park</option>
+                <option>Baranagar</option>
+                <option>Chandannagar</option>
+                <option>Garfa</option>
+                <option>Jorabagan</option>
+                <option>Baidyabati</option>
+                <option>Topsia</option>
+                <option>Dhapa</option>
+                <option>Netaji Nagar</option>
+                <option>Maniktala</option>
+                <option>Cossipore</option>
+                <option>Nayabad</option>
+                <option>Baghajatin</option>
+                <option>Jadavpur</option>
+                <option>Kankurgachi</option>
+                <option>Pancha Sayar</option>
+                <option>Phool Bagan</option>
+                <option>Bansdroni</option>
+                <option>Kustia</option>
+                <option>Ganguly Bagan</option>
+                <option>Jodhpur Park</option>
+                <option>Dakshineswar</option>
+                <option>Bhatenda</option>
+                <option>Reekjoyoni</option>
+                <option>Khardah</option>
+                <option>vKamarhati on BT Road</option>
+                <option>Paschim Barisha</option>
+                <option>Nabapally</option>
+                <option>Dhakuria</option>
+                <option>Regent Park</option>
+                <option>Patuli</option>
+                <option>kalikapur</option>
+                <option>Budge Budge</option>
+                <option>Beliaghata</option>
+                <option>Baguihati</option>
+                <option>Shyamnagar</option>
+                <option>Uttar Panchanna Gram</option>
+                <option>birati</option>
+                <option>Maheshtala</option>
+                <option>North Dumdum </option>
+                <option>Bramhapur</option>
+                <option>deshbandhu nagar </option>
+                <option>vWard No 113</option>
+                <option>Kamalgazi</option>
+                <option>VIP Nagar</option>
+                <option>Barisha</option>
+                <option>Ichapur</option>
+                <option>Salkia</option>
+                <option>Bally</option>
+                <option>Sealdah</option>
+                <option>Keyatala</option>
+                <option>Boral</option>
+                <option>Liluah</option>
+                <option>Dum Dum Cantonment</option>
+                <option>Mali Panchghara</option>
+                <option>Kamdahari</option>
+                <option>Akra</option>
+                <option>Sarada Pally</option>
+                <option>Sinthi</option>
+                <option>Rajpur</option>
+                <option>Panihati</option>
+                <option>Baruipur</option>
+                <option>Golf Green</option>
+                <option>Howrah Railway Station</option>
+                <option>Shibpur</option>
+                <option>Buroshibtalla</option>
+                <option>Bankra</option>
+                <option>College Square</option>
+                <option>Beniapukur</option>
+                <option>Bow Bazaar</option>
+                <option>Mominpore</option>
+                <option>Satchashipara</option>
+                <option>Harinavi</option>
+                <option>Dunlop </option>
+                <option>Chotto Chandpur </option>
+                <option>Jagadishpur</option>
+                <option>Noapara</option>
+                <option>Banamalipur</option>
+                <option>Bonhooghly on BT Road</option>
+                <option>Botanical Garden Area</option>
+                <option>Royde Park</option>
+                <option>Panchpota</option>
+                <option>Taltala</option>
+                <option>Bally Khal</option>
+                <option>Ghosh Para</option>
+                <option>Murali</option>
+                <option>Rishrav</option>
+                <option>N S C Bose Road</option>
+
+                </select>
+            </div>
+
+            <input class="submit" type="submit" value="Estimate Price" />
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>

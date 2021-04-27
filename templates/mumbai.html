@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="{{url_for('static',filename='style3.css')}}" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{url_for('static',filename='favicon.png')}}" />
+
+    <title>Mumbai Home Price Prediction</title>
+</head>
+
+<body>
+    <div class=" img"></div>
+     <nav class="navbar navbar-inverse navbar-light navbar-fixed-top">
+      <a href="{{url_for('home')}}" class="navbar-brand"><img src="static/homeIcon.png" height="30" width="30"></a>
+    </nav>
+    <div class="container text-center">
+        <h1><b>Mumbai Property Price Prediction</b></h1>
+        <form class="form" action="{{url_for('mumbai_prediction')}}" method="POST" autocomplete="off">
+            <h2>Area (Square Feet)</h2>
+            <input required aria-required="true" type="number" class="area" id="uiSqft" class="floatLabel"
+                name="Squareft" placeholder="1000" min="1000" max="50000" />
+
+            <h2>BHK</h2>
+            <div class="switch-field text-center">
+                <div class="allRadio">
+                    <input class="text-center" type="radio" id="radio-bhk-1" name="uiBHK" value="1" />
+                    <label class="text-center" for="radio-bhk-1">1</label>
+                    <input class="text-center" type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked />
+                    <label class="text-center" for="radio-bhk-2">2</label>
+                    <input class="text-center" type="radio" id="radio-bhk-3" name="uiBHK" value="3" />
+                    <label class="text-center" for="radio-bhk-3">3</label>
+                    <input class="text-center" type="radio" id="radio-bhk-4" name="uiBHK" value="4" />
+                    <label class="text-center" for="radio-bhk-4">4</label>
+                    <input class="text-center" type="radio" id="radio-bhk-5" name="uiBHK" value="5" />
+                    <label class="text-center" for="radio-bhk-5">5</label>
+                </div>
+            </div>
+            <h2>Bathrooms</h2>
+            <div class="switch-field text-center">
+                <div class="allRadio">
+                    <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1" />
+                    <label for="radio-bath-1">1</label>
+                    <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked />
+                    <label for="radio-bath-2">2</label>
+                    <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3" />
+                    <label for="radio-bath-3">3</label>
+                    <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4" />
+                    <label for="radio-bath-4">4</label>
+                    <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5" />
+                    <label for="radio-bath-5">5</label>
+                </div>
+            </div>
+
+
+            <h2>Location</h2>
+            <div>
+                <select required aria-required="true" name="sLocation" id="uiLocations" class="location">
+                    <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+                    <option>Mumbai Central</option>
+                    <option>Mumbai</option>
+                    <option>Sector-13 Kharghar</option>
+                    <option>Sector 18 Kharghar</option>
+                    <option>Dombivali</option>
+                    <option>Churchgate</option>
+                    <option>Prabhadevi</option></option>
+                    <option>Jogeshwari West</option>
+                    <option>Kalyan East</option>
+                    <option>Malad East</option>
+                    <option>Virar East</option>
+                    <option>Virar</option>
+                    <option>Malad West</option>
+                    <option>Borivali East</option>
+                    <option>Mira Road East</option>
+                    <option>Goregaon West</option>
+                    <option>Kandivali West</option>
+                    <option>Borivali West</option>
+                    <option>Kandivali East</option>
+                    <option>Andheri East</option>
+                    <option>Goregaon East</option>
+                    <option>Wadala</option>
+                    <option>Ulwe</option>
+                    <option>Dahisar</option>
+                    <option>kandivali</option>
+                    <option>Goregaon</option>
+                    <option>Santacruz West</option>
+                    <option>Bhandup West</option>
+                    <option>thakur village kandivali east</option>
+                    <option>Santacruz West</option>
+                    <option>Kanjurmarg</option>
+                    <option>I C Colony</option>
+                    <option>Dahisar W</option>
+                    <option>Marol</option>
+                    <option>Parel</option>
+                    <option>Lower Parel</option>
+                    <option><option>Worli</option>
+                    <option>Jogeshwari East</option>
+                    <option>Chembur Shell Colony</option>
+                    <option>Central Avenue</option>
+                    <option>Chembur East</option>
+                    <option>Diamond Market Road</option>
+                    <option>Mulund</option>
+                    <option>Nalasopara West</option>
+                    <option>raheja vihar</option>
+                    <option>Powai Lake</option>
+                    <option>MHADA Colony 20</option>
+                    <option>Tolaram Colony</option>
+                    <option>Taloja</option>
+                    <option>Thane West</option>
+                    <option>Vangani</option>
+                    <option>Sector 5 Ulwe</option>
+                    vSector12 New Panvel</option>
+                    <option>Sector 17 Ulwe</option>
+                    <option>Sector9 Kamothe</option>
+                    <option>Sector 19 Kharghar</option>
+                    <option>Navi Basti</option>
+                    <option>Sector12 Kamothe</option>
+                    <option>Sector 21 Kamothe</option>
+                    <option>Rutu Enclave</option>
+                    <option>taloja panchanand</option>
+                    <option>Virar West</option>
+                    <option>Chembur</option>
+                    <option>Sector 20 Kamothe</option>
+                    <option>Sector 22 Kamothe</option>
+                    <option>Sector 18 Kamothe</option>
+                    <option>Sector-5 Kamothe</option>
+                    <option>Sector-A Kamothe</option>
+                    <option>Sector 11 Kamothe</option>
+                    <option>Sector-18 Ulwe</option>
+                    <option>Sector-12 Kamothe</option>
+                    <option>azad nagar</option>
+                    <option>Sindhi Society Chembur</option>
+                    <option>Kurla</option>
+                    <option>Sahkar Nagar</option>
+                    <option>Deonar</option>
+                    <option>Thane</option>
+                    <option>Jankalyan Nagar</option>
+                    <option>Badlapur</option>
+                    <option>Ambarnath</option>
+
+                </select>
+            </div>
+
+            <input class="submit" type="submit" value="Estimate Price" />
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>

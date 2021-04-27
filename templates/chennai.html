@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="{{url_for('static',filename='style3.css')}}" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{url_for('static',filename='favicon.png')}}" />
+
+    <title>Chennai Home Price Prediction</title>
+</head>
+
+<body>
+    <div class=" img"></div>
+     <nav class="navbar navbar-inverse navbar-light navbar-fixed-top">
+      <a href="{{url_for('home')}}" class="navbar-brand"><img src="static/homeIcon.png" height="30" width="30"></a>
+    </nav>
+    <div class="container text-center">
+        <h1><b>Chennai Property Price Prediction</b></h1>
+        <form class="form" action="{{url_for('chennai_prediction')}}" method="POST" autocomplete="off">
+            <h2>Area (Square Feet)</h2>
+            <input required aria-required="true" type="number" class="area" id="uiSqft" class="floatLabel"
+                name="Squareft" placeholder="1000" min="1000" max="50000" />
+
+            <h2>BHK</h2>
+            <div class="switch-field text-center">
+                <div class="allRadio">
+                    <input class="text-center" type="radio" id="radio-bhk-1" name="uiBHK" value="1" />
+                    <label class="text-center" for="radio-bhk-1">1</label>
+                    <input class="text-center" type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked />
+                    <label class="text-center" for="radio-bhk-2">2</label>
+                    <input class="text-center" type="radio" id="radio-bhk-3" name="uiBHK" value="3" />
+                    <label class="text-center" for="radio-bhk-3">3</label>
+                    <input class="text-center" type="radio" id="radio-bhk-4" name="uiBHK" value="4" />
+                    <label class="text-center" for="radio-bhk-4">4</label>
+                    <input class="text-center" type="radio" id="radio-bhk-5" name="uiBHK" value="5" />
+                    <label class="text-center" for="radio-bhk-5">5</label>
+                </div>
+            </div>
+            <h2>Bathrooms</h2>
+            <div class="switch-field text-center">
+                <div class="allRadio">
+                    <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1" />
+                    <label for="radio-bath-1">1</label>
+                    <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked />
+                    <label for="radio-bath-2">2</label>
+                    <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3" />
+                    <label for="radio-bath-3">3</label>
+                    <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4" />
+                    <label for="radio-bath-4">4</label>
+                    <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5" />
+                    <label for="radio-bath-5">5</label>
+                </div>
+            </div>
+
+
+            <h2>Location</h2>
+            <div>
+                <select required aria-required="true" name="sLocation" id="uiLocations" class="location">
+                    <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+                    <option>Perungalathur</option>
+                    <option>Chennai</option>
+                    <option>Madhavaram</option>
+                    <option>Karapakkam</option>
+                    <option>Thiruvidandhai</option>
+                    <option>Iyappanthangal</option>
+                    <option>Mevalurkuppam</option>
+                    <option>Kolapakkam</option>
+                    <option>Kundrathur</option>
+                    <option>Pammal</option>
+                    <option>Puzhal</option>
+                    <option>Selaiyur</option>
+                    <option>Thoraipakkam OMR</option>
+                    <option>Anna Nagar</option>
+                    <option>Mogappair</option>
+                    <option>Sholinganallur</option>
+                    <option>Medavakkam</option>
+                    <option>Avadi</option>
+                    <option>Tiruvottiyur</option>
+                    <option>Manapakkam</option>
+                    <option>Madipakkam</option>
+                    <option>Thiruvanmiyur</option>
+                    <option>Ramapuram</option>
+                    <option>Saidapet</option>
+                    <option>Poonamallee</option>
+                    <option>Pallavaram</option>
+                    <option>Maraimalai Nagar</option>
+                    <option>Madambakkam</option>
+                    <option>Perungudi</option>
+                    <option>Villivakkam</option>
+                    <option>Adyar</option>
+                    <option>Navallur</option>
+                    <option>Moolacheri</option>
+                    <option>Chromepet</option>
+                    <option>Nandambakkam</option>
+                    <option>Kelambakkam</option>
+                    <option>Vadapalani</option>
+                    <option>Kumananchavadi</option>
+                    <option>Porur</option>
+                    <option>Periyapanicheri</option>
+                    <option>Manikandan Nagar</option>
+                    <option>Kodambakkam</option>
+                    <option>Velachery</option>
+                    <option>East Tambaram</option>
+                    <option>Gopalapuram</option>
+                    <option>Sunnambu Kolathur S Kolathur</option>
+                    <option>Perumbakkam</option>
+                    <option>Cholambedu</option>
+                    <option>Urapakkam</option>
+                    <option>Raja Annamalai Puram</option>
+                    <option>Besant Nagar</option>
+                    <option>Peerakankaranai</option>
+                    <option>Nanmangalam</option>
+                    <option>Jamalia</option>
+                    <option>Guduvancheri</option>
+                    <option>Sembakkam</option>
+                    <option>Adambakkam</option>
+                    <option>Nungambakkam</option>
+                    <option>T Nagar</option>
+                    <option>K K Nagar</option>
+                    <option>Ambattur</option>
+                    <option>Valasaravakkam</option>
+                    <option>Kanathur Reddikuppam</option>
+                    <option><option>Mugalivakkam</option>
+                    <option>Purasaiwakkam</option>
+                    <option>Maduravoyal</option>
+                    <option>Gowrivakkam</option>
+                    <option>Mudichur</option>
+                    <option>West Tambaram</option>
+                    <option>Alwarpet</option>
+                    <option>Annanagar West</option>
+                    <option>Thiruverkadu</option>
+                    <option>tambaram west</option>
+                    <option>Guindy</option>
+                    <option>Korattur</option>
+                    <option>Tambaram Sanatoruim</option>
+                    <option>Irumbuliyur</option>
+                    <option>Kolathur</option>
+                    <option>Thirumullaivoyal</option>
+                    <option>Singaperumal Koil</option>
+                    <option>Ayapakkam</option>
+                    <option>Perambur</option>
+                    <option>Chetpet</option>
+                    <option>Kilpauk</option>
+                    <option>Egmore</option>
+                    <option>Alandur</option>
+                    <option>Kovur</option>
+                    <option>Vandalur</option>
+                    <option>Pozhichalur</option>
+                    <option>Vanagaram</option>
+                    <option>Thoraipakkam</option>
+                    <option>Ullagaram</option>
+                    <option>Kovilambakkam</option>
+                    <option>Kattupakkam</option>
+                    <option>Thirumazhisai</option>
+                    <option>Kattankulathur</option>
+                    <option>Ayanambakkam</option>
+                    <option>Sithalapakkam</option>
+                    <option>Vengaivasal</option>
+                    <option>Kilkattalai</option>
+                    <option>Annanagar</option>
+                    <option>Chengalpattu</option>
+                    <option>Pallikaranai</option>
+                    <option>Rajakilpakkam</option>
+                    <option>Chitlapakkam</option>
+                    <option>Palavakkam</option>
+                    <option>Kotturpuram</option>
+                    <option>Nenmeli</option>
+                    <option>Ramavaram</option>
+                    <option>Padi</option>
+                    <option>NehruNagar</option>
+                    <option>Pazavanthangal</option>
+                    <option>Thatchoor</option>
+                    <option>Padur</option>
+                    <option>Iyyappanthangal</option>
+                    <option>Mambakkam</option>
+                    <option>Egatoor</option>
+                    <option>Semmancheri</option>
+                    <option>Virugambakkam</option>
+                    <option>Moolakadai</option>
+                    <option>Siruseri</option>
+                    <option>Velappachavadi</option>
+                    <option>Ekkatuthangal</option>
+                    <option>Royapettah</option>
+                    <option>Nandanam</option>
+                    <option>Vellakkal</option>
+                    <option>Annamalai Colony</option>
+                    <option>Thalambur</option>
+                    <option>Nanganallur</option>
+                    <option>Chembarambakkam</option>
+                    <option>Teynampet</option>
+                    <option>Mannivakkam</option>
+                    <option>Thaiyur</option>
+                    <option>Injambakkam</option>
+                    <option>Aminjikarai</option>
+                    <option>CIT Nagar</option>
+                    <option>Koyambedu</option>
+                    <option>Kil Ayanambakkam</option>
+                    <option>Choolaimedu</option>
+                    <option>Thirumudivakkam</option>
+                    <option>Kottivakkam</option>
+                    <option>Ponneri</option>
+                    <option>Mahindra World City</option>
+                    <option>Purasawalkam</option>
+                    <option>Anakaputhur</option>
+                    <option>TNHB</option>
+                    <option>Manali</option>
+                    <option>Mogappair East</option>
+                    <option>Bakthavatchalapuram</option>
+                    <option>Chikkarayapuram</option>
+                    <option>Triplicane</option>
+                    <option>Tiruporur Near Kelambakkam</option>
+                    <option>Agaramthen</option>
+                    <option>Vengambakkam</option>
+                    <option>Keelma Nagar</option>
+                    <option>Gerugambakkam</option>
+                    <option>Ottiyambakkam</option>
+                    <option>Vettuvankani</option>
+                    <option>Ponniammanmedu</option>
+                    <option>Ambattur INDUSTRIAL ESTATE</option>
+                    <option>Royapuram</option>
+                    <option>Shanthi Nagar</option>
+                    <option>Serapanacheri</option>
+                    <option>Kuthambakkam</option>
+                    <option>Anna Nagar East</option>
+                    <option>Thiruneermalai</option>
+                    <option>Mangadu</option>
+                    <option>Arumbakkam</option>
+                    <option>Irandankattalai</option>
+                    <option>West Mambalam</option>
+                    <option>Tondiarpet</option>
+                    <option>Ayanavaram</option>
+                    <option>Mappedu</option>
+                    <option>Abiramapuram</option>
+                    <option>Mylapore</option>
+                    <option>Shenoy Nagar</option>
+                    <option>Ashok Nagar</option>
+                    <option>Tharapakkam</option>
+                    <option>OMR Road</option>
+                    <option>GST Road</option>
+                    <option>200 Feet Radial Road</option>
+                    <option>Adhanur</option>
+                    <option>Egattur</option>
+                    <option>tambaram east</option>
+                    <option>Pallikaranai VGP Shanti Nagar</option>
+                </select>
+            </div>
+
+            <input class="submit" type="submit" value="Estimate Price" />
+        </form>
+    </div>
+</body>
+
+</html>

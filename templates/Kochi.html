@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="{{url_for('static',filename='style3.css')}}" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{url_for('static',filename='favicon.png')}}" />
+
+    <title>Kochi Home Price Prediction</title>
+</head>
+
+<body>
+    <div class=" img"></div>
+     <nav class="navbar navbar-inverse navbar-light navbar-fixed-top">
+      <a href="{{url_for('home')}}" class="navbar-brand"><img src="static/homeIcon.png" height="30" width="30"></a>
+    </nav>
+    <div class="container text-center">
+        <h1><b>Kochi Property Price Prediction</b></h1>
+        <form class="form" action="{{url_for('Kochi_prediction')}}" method="POST" autocomplete="off">
+            <h2>Area (Square Feet)</h2>
+            <input required aria-required="true" type="number" class="area" id="uiSqft" class="floatLabel"
+                name="Squareft" placeholder="1000" min="1000" max="50000" />
+
+            <h2>BHK</h2>
+            <div class="switch-field text-center">
+                <div class="allRadio">
+                    <input class="text-center" type="radio" id="radio-bhk-1" name="uiBHK" value="1" />
+                    <label class="text-center" for="radio-bhk-1">1</label>
+                    <input class="text-center" type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked />
+                    <label class="text-center" for="radio-bhk-2">2</label>
+                    <input class="text-center" type="radio" id="radio-bhk-3" name="uiBHK" value="3" />
+                    <label class="text-center" for="radio-bhk-3">3</label>
+                    <input class="text-center" type="radio" id="radio-bhk-4" name="uiBHK" value="4" />
+                    <label class="text-center" for="radio-bhk-4">4</label>
+                    <input class="text-center" type="radio" id="radio-bhk-5" name="uiBHK" value="5" />
+                    <label class="text-center" for="radio-bhk-5">5</label>
+                </div>
+            </div>
+            <h2>Bathrooms</h2>
+            <div class="switch-field text-center">
+                <div class="allRadio">
+                    <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1" />
+                    <label for="radio-bath-1">1</label>
+                    <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked />
+                    <label for="radio-bath-2">2</label>
+                    <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3" />
+                    <label for="radio-bath-3">3</label>
+                    <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4" />
+                    <label for="radio-bath-4">4</label>
+                    <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5" />
+                    <label for="radio-bath-5">5</label>
+                </div>
+            </div>
+
+
+            <h2>Location</h2>
+            <div>
+                <select required aria-required="true" name="sLocation" id="uiLocations" class="location">
+                    <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+                    <option>Kakkanad</option>
+                    <option>Pukkattupady</option>
+                    <option>Kaloor</option>
+                    <option>Aluva</option>
+                    <option>Edappally</option>
+                    <option>Marine Drive</option>
+                    <option>Eroor</option>
+                    <option>Kadavanthra</option>
+                    <option>Thripunithura</option>
+                    <option>Kuzhivelippady</option>
+                    <option>Vypin Pallipuram Road</option>
+                    <option>Elamakkara</option>
+                    <option>Vennala</option>
+                    <option>Panampilly Nagar</option>
+                    <option>Perumbavoor</option>
+                    <option>Kalamassery</option>
+                    <option>chendamangalam</option>
+                    <option>Kakkanad Pallikara Road</option>
+                    <option>vyttila</option>
+                    <option>Angamaly</option>
+                    <option>Thammanam</option>
+                    <option>Thevara</option>
+                    <option>Vazhakkala</option>
+                    <option>Pallikkara</option>
+                    <option>Thevakkal</option>
+                    <option>Palarivattom</option>
+                    <option>Thrikkakara</option>
+                    <option>Nedumbassery</option>
+                    <option>Ernakulam South</option>
+                    <option>Padamughal</option>
+                    <option>Thykoodam</option>
+                    <option>Elamkulam</option>
+                    <option>Edathala</option>
+                    <option>Kangarappady</option>
+                    <option>Mamangalam</option>
+                    <option>Varapuzha</option>
+                    <option>Mulanthuruthy</option>
+                    <option>Kathrikadavu</option>
+                    <option>Kurlad Anganvadi Road</option>
+                    <option>Kacheripady</option>
+                    <option>Cheranalloor</option>
+                    <option>Chambakkara Kannadikadu Road</option>
+                    <option>Chottanikkara</option>
+                    <option>High Court Road</option>
+                    <option>Infopark</option>
+                    <option>Kannankulangara</option>
+                    <option>Keerthi Nagar Road</option>
+                    <option>Kochi</option>
+                    <option>Kundannoor</option>
+                    <option>Manjummel</option>
+                    <option>Puthiyakavu</option>
+                    <option>Sahodaran Ayyappan Road</option>
+                    <option>Shenoys</option>
+                    <option>Thengode Edachira Road</option>
+                    <option>Thiruvankulam Chottanikkara Road</option>
+                    <option>Thottakkattukara</option>
+                    <option>Pallimukku</option>
+                    <option>Perumanoor</option>
+                    <option>Chittoor Road</option>
+                    <option>Chalikkavattom</option>
+                    <option>Eroor South</option>
+                    <option>Fortkochi</option>
+                    <option>Kadungalloor</option>
+                    <option>Kathrikadavu Railway Over Bridge</option>
+                    <option>Mini Bypass Tripunithura Road</option>
+                    <option>Ponekkara</option>
+                    <option>Puthencruz</option>
+                    <option>Thrikkakara North</option>
+                    <option>Vazhakkulam</option>
+                    <option>Elamakkara Road</option>
+                    <option>Elamkulam Bridge</option>
+                    <option>Ernakulam North Kathrikadavu</option>
+                    <option>Eroor Rd</option>
+                    <option>Ettumanoor Ernakulam Rd</option>
+                    <option>Gandhi Nagar</option>
+                    <option>Hill Palace Road</option>
+                    <option>Irumpanam</option>
+                    <option>Kadavanthara Road</option>
+                    <option>Kakkanad NGO Quarters Road</option>
+                    <option>Kakkanad Road</option>
+                    <option>Kaladi</option>
+                    <option>Kannamkulangara Road</option>
+                    <option>Karukutty</option>
+                    <option>Kochi Madurai Dhanushkodi Road</option>
+                    <option>Kollamkudimugal</option>
+                    <option>KP Vallon Road</option>
+                    <option>Mulavukad</option>
+                    <option>Muppathadam Road</option>
+                    <option>Muttambalam Village Kottayam</option>
+                    <option>Muvattupuzha</option>
+                    <option>Naroth Road</option>
+                    <option>Nettoor</option>
+                    <option>Pachalam</option>
+                    <option>Palluruthy</option>
+                    <option>Panchayat Road</option>
+                    <option>Periyar Nagar</option>
+                    <option>Pinarmunda Infopark Short Road</option>
+                    <option>Poonithura</option>
+                    <option>Pukkattupady Road</option>
+                    <option>Pullepady</option>
+                    <option>Puthiya Road</option>
+                    <option>Salem Kochi Highway</option>
+                    <option>Satellite Township Padamughal</option>
+                    <option>SRM Road</option>
+                    <option>Thevara Ferry Road</option>
+                    <option>Vidya Nagar Colony Thrikkakara</option>
+                    <option>Warriyam Road</option>
+                    <option>Ayyappankavu</option>
+                    <option>Valummel</option>
+                    <option>Edakochi</option>
+                    <option>Panayappilly</option>
+                    <option>South Chittoor</option>
+                    <option>Eloor</option>
+                    <option>Kunnathunad</option>
+                    <option>Veliyathunadu</option>
+                    <option>Koonammavu</option>
+                    <option>Puthenkurish</option>
+                    <option>Kunnukara</option>
+                    <option>Kolenchery</option>
+                    <option>A z a d Road</option>
+                    <option>Alinchuvadu</option>
+                    <option>Alwaye</option>
+                    <option>Ambalamedu</option>
+                    <option>Ambelipadam Road</option>
+                    <option>Amrita Nagar</option>
+                    <option>Aroor</option>
+                    <option>Azad Road</option>
+                    <option>Block Office Road</option>
+                    <option>Bolghatty Palace Island Resort</option>
+                    <option>Brahmapuram</option>
+                    <option>Cannon Shed Road</option>
+                    <option>CBI Road</option>
+                    <option>Chakkalakkal</option>
+                    <option>Chakkalapadam Road</option>
+                    <option>Chakkarapparambu Road</option>
+                    <option>Changampuzha Nagar</option>
+                    <option>Changampuzha Park Road</option>
+                    <option>Chavakkadu Kochi</option>
+                    <option>Chembakara</option>
+                    <option>Chembumukku</option>
+                    <option>Cherthala Taluk Alappuzha</option>
+                    <option>Chilavannur</option>
+                    <option>Chitrapuzha Road</option>
+                    <option>Chittethukara</option>
+                    <option>Chunangamvely</option>
+                    <option>Cochin College Road</option>
+                    <option>Convent Road</option>
+                    <option>Desom</option>
+                    <option>Echamuku</option>
+                    <option>Elamana Road</option>
+                    <option>Eroor Road</option>
+                    <option>FACT Nagar</option>
+                    <option>Gandhinagar Road</option>
+                    <option>Good Earth Lane</option>
+                    <option>HMT Colony</option>
+                    <option>HMT Colony Road</option>
+                    <option>HMT Kalamassery</option>
+                    <option>Janatha Road</option>
+                    <option>Jawahar Nagar</option>
+                    <option>Jaya Nagar</option>
+                    <option>Journalist Colony</option>
+                    <option>Judgemukku Thrikkakara</option>
+                    <option>Kaipadamugal</option>
+                    <option>Kakkanad Junction Road</option>
+                    <option>Kalabhavan Road</option>
+                    <option>Kaloor Kadavanthara Road</option>
+                    <option>Kangarappady Navodaya Road</option>
+                    <option>Karikkamuri</option>
+                    <option>Karimugal</option></option>
+                    <option>Karimugal Kaninadu Road</option>
+                    <option>Karingachira</option>
+                    <option>Karippassery</option>
+                    <option>Karshaka Road</option>
+                    <option>KB Jacob Road</option>
+                    <option>Kochangadi</option>
+                    <option>Kochi Metropolitan Area</option>
+                    <option>Kochi Road</option>
+                    <option>Kongorpilly Olanad Road</option>
+                    <option>Kothamangalam</option>
+                    <option>Kottayam Kochi</option>
+                    <option>Kumaranasan Road</option>
+                    <option>Kumarapuram Temple Road</option>
+                    <option>Kumbalam</option>
+                    <option>Kunnumpuram</option>
+                    <option>Kuthukuzhi</option>
+                    <option>Kyomtha Seminary Road</option>
+                    <option>LakeshoreMadavana Service Road</option>
+                    <option>Layam Road</option>
+                    <option>Link Park Lane</option>
+                    <option>Lisie Hospital Road</option>
+                    <option>Malikampeedika</option>
+                    <option>Mallapally Taluk Pathanamthitta</option>
+                    <option>Mallapuram</option>
+                    <option>Mannarakkara Road</option>
+                    <option>Market Road</option>
+                    <option>Marottichuvadu</option>
+                    <option>Mattanchery</option>
+                    <option>Medical Centre Road</option>
+                    <option>Medical College NAD Road</option>
+                    <option>Menaka-MARINE DRIVE</option>
+                    <option>MLA Road</option>
+                    <option>Mundampalam</option>
+                    <option>Mundamveli</option>
+                    <option>Munnar</option>
+                    <option>Muthukulam Village Kochi</option>
+                    <option>Navodaya North Millumpady</option>
+                    <option>Nethaji Nagar</option>
+                    <option>NGO Quarters Kochi</option>
+                    <option>NGO Quarters Mavelipuram Road</option>
+                    <option>Nh Byepass</option>
+                    <option>Njarackal</option>
+                    <option>Njarakkal</option>
+                    <option>North Janatha Road</option>
+                    <option>North Kalamassery</option>
+                    <option>Ottapalam</option>
+                    <option>Padivattom</option>
+                    <option>Palachuvadu</option>
+                    <option>Pallimugal Rd</option>
+                    <option>Panampilly Nagar Link Road</option>
+                    <option>Panangad</option>
+                    <option>Paravur</option>
+                    <option>Pathadipalam</option>
+                    <option>Pathirapally Village Ambalapuzha</option>
+                    <option>Pattalam Road</option>
+                    <option>Perumbaikadu Village Kottayam</option>
+                    <option>Pipeline Road</option>
+                    <option>Ponnurunni</option>
+                    <option>Pottakuzhi Mamangalam Road</option>
+                    <option>PT Usha Road</option>
+                    <option>Pulikillam East Road</option>
+                    <option>Puthenpally</option>
+                    <option>PuthiyaKavu Valavu Road</option>
+                    <option>Puthukkalavattom Road</option>
+                    <option>Rameshwaram Village</option>
+                    <option>Ravipuram</option>
+                    <option>Residential House Kurambala</option>
+                    <option>Seaport Airport Road</option>
+                    <option>Smartcity Road</option>
+                    <option>SN Junction Over Bridge</option>
+                    <option>ociety Road</option>
+                    <option>South Kalamassery</option>
+                    <option>St James Church Rd</option>
+                    <option>Stadium Link Road</option>
+                    <option>Stadium Road</option>
+                    <option>Stadium Round</option>
+                    <option>TD Road</option>
+                    <option>Thamaramkulangara Road</option>
+                    <option>Valanjambalam</option>
+                    <option>Valappu</option>
+                    <option>Vallarpadam Church Road</option>
+                    <option>Vallikavu Road</option>
+                    <option>Veli Road</option>
+                    <option>Vidya Nagar Colony</option>
+                    <option>Vaduthala</option>
+                    <option>MG Road</option>
+
+                </select>
+            </div>
+
+            <input class="submit" type="submit" value="Estimate Price" />
+        </form>
+    </div>
+</body>
+
+</html>

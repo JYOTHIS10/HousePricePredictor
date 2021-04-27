@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="{{url_for('static',filename='style3.css')}}" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{url_for('static',filename='favicon.png')}}" />
+
+    <title>Delhi Home Price Prediction</title>
+</head>
+
+<body>
+    <div class=" img"></div>
+     <nav class="navbar navbar-inverse navbar-light navbar-fixed-top">
+      <a href="{{url_for('home')}}" class="navbar-brand"><img src="static/homeIcon.png" height="30" width="30"></a>
+    </nav>
+    <div class="container text-center">
+        <h1><b>Delhi Property Price Prediction</b></h1>
+        <form class="form" action="{{url_for('delhi_prediction')}}" method="POST" autocomplete="off">
+            <h2>Area (Square Feet)</h2>
+            <input required aria-required="true" type="number" class="area" id="uiSqft" class="floatLabel"
+                name="Squareft" placeholder="1000" min="1000" max="50000" />
+
+            <h2>BHK</h2>
+            <div class="switch-field text-center">
+                <div class="allRadio">
+                    <input class="text-center" type="radio" id="radio-bhk-1" name="uiBHK" value="1" />
+                    <label class="text-center" for="radio-bhk-1">1</label>
+                    <input class="text-center" type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked />
+                    <label class="text-center" for="radio-bhk-2">2</label>
+                    <input class="text-center" type="radio" id="radio-bhk-3" name="uiBHK" value="3" />
+                    <label class="text-center" for="radio-bhk-3">3</label>
+                    <input class="text-center" type="radio" id="radio-bhk-4" name="uiBHK" value="4" />
+                    <label class="text-center" for="radio-bhk-4">4</label>
+                    <input class="text-center" type="radio" id="radio-bhk-5" name="uiBHK" value="5" />
+                    <label class="text-center" for="radio-bhk-5">5</label>
+                </div>
+            </div>
+            <h2>Bathrooms</h2>
+            <div class="switch-field text-center">
+                <div class="allRadio">
+                    <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1" />
+                    <label for="radio-bath-1">1</label>
+                    <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked />
+                    <label for="radio-bath-2">2</label>
+                    <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3" />
+                    <label for="radio-bath-3">3</label>
+                    <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4" />
+                    <label for="radio-bath-4">4</label>
+                    <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5" />
+                    <label for="radio-bath-5">5</label>
+                </div>
+            </div>
+
+
+            <h2>Location</h2>
+            <div>
+                <select required aria-required="true" name="sLocation" id="uiLocations" class="location">
+                    <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+                    <option>Delhi</option>
+                    <option>Sector 10 Dwarka</option>
+                    <option>Uttam Nagar</option>
+                    <option>Sarita Vihar</option>
+                    <option>Dwarka Mor</option>
+                    <option>Sector 7 Dwarka</option>
+                    <option>Sector 6 Dwarka</option>
+                    <option>Sector 5 Dwarka</option>
+                    <option>Sector 23 Rohini</option>
+                    <option>Mayur Vihar II</option>
+                    <option>Sector 24 Rohini</option>
+                    <option>Sector 11 Dwarka</option>
+                    <option>Sector 23 Dwarka</option>
+                    <option>Sector 12 Dwarka</option>
+                    <option>West End</option>
+                    <option>Sector 9 Rohini</option>
+                    <option>Mundka</option>
+                    <option>Sector 13 Rohini</option>
+                    <option>Jamia Nagar</option>
+                    <option>Sector 19 Dwarka</option>
+                    <option>Sector 17 Dwarka</option>
+                    <option>Bindapur<option></option>
+                    <option>Sector-18 Dwarkav</option>
+                    <option>Vasant Kunjv</option>
+                    <option>Shastri Nagar</option>
+                    <option>Sector-8 Rohini</option>
+                    <option>Sector 9 Dwarka</option>
+                    <option>Shanti Park Dwarka</option>
+                    <option>Govindpuri</option>
+                    <option>Sector 22 Dwarka</option>
+                    <option>Matiala</option>
+                    <option>Saket</option>
+                    <option>Mahavir Enclavve</option>
+                    <option>Burari</option>
+                    <option>Shahdara</option>
+                    <option>Babarpur</option>
+                    <option>Khanpur</option>
+                    <option>Sector 13 Dwarkav</option>
+                    <option>Mansa am Park</option>
+                    <option>Green Park</option>
+                    <option>Kalkaji</option>
+                    <option>Sector 4 Dwarka</option>
+                    <option>DLF Phase 5</option>
+                    <option>Sector 3 Dwarka</option>
+                    <option>Chittaranjan Park</option>
+                    <option>Chattarpur</option>
+                    <option>Greater Kailash</option>
+                    <option>Sector-14 Rohini</option>
+                    <option>Paschim Vihar</option>
+                    <option>Pitampura</option>
+                    <option>Sector 18B Dwarka</option>
+                    <option>Sector 2 Dwarka</option>
+                    <option>Jasola</option>
+                    <option>Pochanpur Colony</option>
+                    <option>Palam</option>
+                    <option>Saidabad</option>
+                    <option>Budh Vihar</option>
+                    <option>Sector 25 Rohini</option>
+                    <option>Sector 18A Dwarka</option>
+                    <option>Sewak Park</option>
+                    <option>Sector 23B Dwarka</option>
+                    <option>Rohini sector 24</option>
+                    <option>Sector 28 Rohini</option>
+                    <option>Rohini Sector 9</option>
+                    <option>Rohini Extension</option>
+                    <option>nawada</option>
+                    <option>Alaknanda</option>
+                    <option>Sector 22 Rohini</option>
+                    <option>Lajpat Nagar</option>
+                    <option>South Extension 2</option>
+                    <option>Sector 16B Dwarka</option>
+                    <option>Sheikh Sarai</option>
+                    <option>Sidhartha Nagar</option>
+                    <option>Sector-D Vasant Kunj</option>
+                    <option>Hauz Khas</option>
+                    <option>Kalkaji Extension</option>
+                    <option>Greater kailash 1</option>
+                    <option>Lajpat Nagar III</option>
+                    <option>Safdarjung Enclave</option>
+                    <option>Greater Kailash II</option>
+                    <option>Sainik Farms</option>
+                    <option>Sector 20 Rohini</option>
+                    <option>greater kailash Enclave 1</option>
+                    <option>DLF Farms</option>
+                    <option>Mehrauli</option>
+                    <option>Mahipalpur</option>
+                    <option>mayur vihar phase 1</option>
+                    <option>Sarvodaya Enclave</option>
+                    <option>arol Bagh</option>
+                    <option>West Sagarpur</option>
+                    <option>Ashok Vihar</option>
+                    <option>Sector 21 Dwarka</option>
+                    <option>East of Kailash</option>
+                    <option>Khirki Extension</option>
+                    <option>Dashrath Puri</option>
+                    <option>SULTANPUR</option>
+                    <option>Patparganj</option>
+                    <option>Kaushambi</option>
+                    <option>Shakurbasti</option>
+                    <option>Hari Nagar</option>
+                    <option>Siri Fort</option>
+                    <option>Katwaria Sarai</option>
+                    <option>Mayur Vihar</option>
+                    <option>Nasirpur</option>
+                    <option>Bharat Vihar</option>
+                    <option>Nanak Heri Village</option>
+                    <option>Vikas Puri</option>
+                    <option>Madhu Vihar</option>
+                    <option>New Ashok Nagar</option>
+                    <option>Naraina</option>
+                    <option>Tagore Garden Extension</option>
+                    <option>New Friends Colony</option>
+                    <option>Sector 14 Rohini</option>
+                    <option>Dabri</option>
+                    <option>R.K. Puram</option>
+                    <option>Vijay Mandal Enclave</option>
+                    <option>Sector 8 Dwarka</option>
+                    <option>Badarpur</option>
+                    <option>Masjid moth</option>
+                    <option>Punjabi Bagh</option>
+                    <option>Gulmohar Enclave</option>
+                    <option>Jasola Vihar Sector 8 Road</option>
+                    <option>Bharthal</option>
+                    <option>Sheikh Sarai Phase2 New Delhi</option>
+                    <option>Abul Fazal Enclave Jamia Nagar</option>
+                    <option>Ramesh Nagar</option>
+                    <option>haheen Bagh Jamia Nagar</option>
+                    <option>Batla House Jamia Nagar</option>
+                    <option>Sector 1A Dwarka</option>
+                    <option>Zakir Nagar</option>
+                    <option>i p extension patparganj</option>
+                    <option>Neb Sarai</option>
+                    <option>Jogabai Extension New Delhi</option>
+                    <option>Jor bagh</option>
+                    <option>dwarka sector 12</option>
+                    <option>Moti Nagar</option>
+                    <option>Press Enclave</option>
+                    <option>Kailash Colony</option>
+                    <option>Karampura</option>
+                    <option>Civil Lines</option>
+                    <option>Khanpur Deoli</option>
+                    <option>Naraina Vihar</option>
+                    <option>Block GH5</option>
+                    <option>West Punjabi Bagh</option>
+                    <option>3 Dwarka Sector 9 Road</option>
+                    <option>Dwarka 11 Sector</option>
+                    <option>Block UU Uttari Pitampura</option>
+                    <option>Siddharth Enclave</option>
+                    <option>Lalita Park </option>
+                    <option>Mathura Road Sarita Vihar</option>
+                </select>
+            </div>
+
+            <input class="submit" type="submit" value="Estimate Price" />
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>

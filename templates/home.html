@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>House price Predictor</title>
+		 <!-- Required meta tags -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+		 <!-- Custom CSS-->
+		<link rel="stylesheet" href="{{url_for('static',filename='style10.css')}}" />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="{{url_for('static',filename='favicon.png')}}"/>
+		<link rel="icon" type="image/png" href="{{url_for('static',filename='homeIcon.png')}}"/>
+   
+	</head>
+	<body>
+		<article>
+			<header  class="header">
+				<nav class="navbar navbar-style ">
+					<div class="container">
+						<div class="navbar-header">
+							<a href=""><img alt="" class="logo" src="static/homeIcon.png"></a>
+
+						</div>
+						<div class="navbar-header">
+							<ul class="nav navbar-header">
+								<li><h1 id="name"class="big-text"><b>House Price Predictor</b></h1></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</header>
+		</article>
+		<button onclick="myKochi()" class="button button1">kochi</button>
+		<button onclick="chennai()" class="button button2">Chennai</button>
+		<button onclick="Bangalore()" class="button button3">Bangalore</button>
+		<button onclick="mumbai()" class="button button4">Mumbai</button>
+		<button onclick="delhi()" class="button button5">Delhi</button>
+		<button onclick="kolkata()" class="button button6">Kolkata</button>
+		<script>
+			function myKochi(){
+			  	window.open("Kochi")
+			}
+			function chennai(){
+			  	window.open("chennai")
+			}
+			function Bangalore(){
+			  	window.open("bangalore")
+			}
+			function mumbai(){
+			  	window.open("mumbai")
+			}
+			function delhi(){
+			  	window.open("delhi")
+			}
+			function kolkata(){
+			  	window.open("Kolkata")
+			}
+		</script>
+	</body>
+</html>
