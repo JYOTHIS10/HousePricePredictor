@@ -262,7 +262,7 @@ print(dataset.head())
 dummies = pd.get_dummies(dataset['location'])
 print(dummies.head())
 
-dataset = pd.concat([dataset, dummies.drop('other', axis='columns')], axis='columns')
+#dataset = pd.concat([dataset, dummies.drop('other', axis='columns')], axis='columns')
 dataset.drop('location', axis=1, inplace=True)
 print(dataset.head())
 print(dataset.shape)

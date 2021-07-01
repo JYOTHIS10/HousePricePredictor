@@ -25,7 +25,8 @@ def kochi():
             loc_index = __data_columns.Kochi(input_json['location'].lower())
         except:
             loc_index = -1
-        x = np.zeros(288)
+
+        x = np.zeros(3)
         x[0] = input_json['sqft']
         x[1] = input_json['bath']
         x[2] = input_json['bhk']
@@ -83,7 +84,7 @@ def chennai():
             loc_index = __data_columns.chennai(input_json['location'].lower())
         except:
             loc_index = -1
-        x = np.zeros(94)
+        x = np.zeros(85)
         x[0] = input_json['sqft']
         x[1] = input_json['bath']
         x[2] = input_json['bhk']
@@ -143,8 +144,8 @@ def bangalore():
             loc_index = -1
         x = np.zeros(146)
         x[0] = input_json['sqft']
-        x[1] = input_json['bath']
-        x[2] = input_json['bhk']
+        x[1] = input_json['bhk']
+        x[2] = input_json['bath']
         if loc_index == 0:
             x[loc_index] = 1
         result = round(model.predict([x])[0], 2)
@@ -199,14 +200,14 @@ def mumbai():
             loc_index = __data_columns.mumbai(input_json['location'].lower())
         except:
             loc_index = -1
-        x = np.zeros(50)
+        x = np.zeros(48)
         x[0] = input_json['sqft']
-        x[1] = input_json['bath']
-        x[2] = input_json['bhk']
+        x[1] = input_json['bhk']
+        x[2] = input_json['bath']
         if loc_index == 0:
             x[loc_index] = 1
         result = round(model.predict([x])[0], 2)
-        result = result * -1
+        # result = result * -1
         print(result)
         return result
 
@@ -258,7 +259,7 @@ def delhi():
             loc_index = __data_columns.delhi(input_json['location'].lower())
         except:
             loc_index = -1
-        x = np.zeros(93)
+        x = np.zeros(83)
         x[0] = input_json['sqft']
         x[1] = input_json['bath']
         x[2] = input_json['bhk']
@@ -324,6 +325,7 @@ def kolkata():
         if loc_index == 0:
             x[loc_index] = 1
         result = round(model.predict([x])[0], 2)
+        result = result * 2
         print(result)
         return result
 
@@ -361,12 +363,12 @@ def kolkata():
         return render_template('Kolkata_prediction.html', result=result)
 
 
-kochi();
-chennai();
-bangalore();
-mumbai();
-delhi();
-kolkata();
+kochi()
+chennai()
+bangalore()
+mumbai()
+delhi()
+kolkata()
 
 if __name__ == '__main__':
     print("Starting Python Flask Server")

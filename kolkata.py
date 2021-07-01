@@ -329,7 +329,7 @@ print(model_scores)
 ### so i will use linear regression model on the whole dataset
 
 
-regressor = LinearRegression()
+regressor = DecisionTreeRegressor()
 regressor.fit(X, y)
 
 
